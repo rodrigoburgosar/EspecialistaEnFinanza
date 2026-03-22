@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Contratos", "src\StockAnalyzer.Contratos\StockAnalyzer.Contratos.csproj", "{CDDAC115-A1DE-4A86-9052-69AAE0299E79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Agentes", "src\StockAnalyzer.Agentes\StockAnalyzer.Agentes.csproj", "{B341342B-1797-4E73-B205-7ADFD3CFC286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Orquestador", "src\StockAnalyzer.Orquestador\StockAnalyzer.Orquestador.csproj", "{9A686C25-2FCB-4358-8DB6-F42B0106CA04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Api", "src\StockAnalyzer.Api\StockAnalyzer.Api.csproj", "{536D9023-0676-471C-9303-CB1D4A2804FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Worker", "src\StockAnalyzer.Worker\StockAnalyzer.Worker.csproj", "{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{876AE5F3-7D5C-4F4F-9D64-61DF3D7AFFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAnalyzer.Tests", "tests\StockAnalyzer.Tests\StockAnalyzer.Tests.csproj", "{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDDAC115-A1DE-4A86-9052-69AAE0299E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDAC115-A1DE-4A86-9052-69AAE0299E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDAC115-A1DE-4A86-9052-69AAE0299E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDAC115-A1DE-4A86-9052-69AAE0299E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B341342B-1797-4E73-B205-7ADFD3CFC286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B341342B-1797-4E73-B205-7ADFD3CFC286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B341342B-1797-4E73-B205-7ADFD3CFC286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B341342B-1797-4E73-B205-7ADFD3CFC286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A686C25-2FCB-4358-8DB6-F42B0106CA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A686C25-2FCB-4358-8DB6-F42B0106CA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A686C25-2FCB-4358-8DB6-F42B0106CA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A686C25-2FCB-4358-8DB6-F42B0106CA04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536D9023-0676-471C-9303-CB1D4A2804FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536D9023-0676-471C-9303-CB1D4A2804FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536D9023-0676-471C-9303-CB1D4A2804FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536D9023-0676-471C-9303-CB1D4A2804FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDDAC115-A1DE-4A86-9052-69AAE0299E79} = {DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}
+		{B341342B-1797-4E73-B205-7ADFD3CFC286} = {DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}
+		{9A686C25-2FCB-4358-8DB6-F42B0106CA04} = {DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}
+		{536D9023-0676-471C-9303-CB1D4A2804FE} = {DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}
+		{76BB8BCB-0DD3-4BCF-BC4F-FB185395B26F} = {DBE786E8-9E00-4C73-BB0E-036DCA4FB5AA}
+		{CA36B626-77A3-4B26-9D24-CDB8B1BFC6DF} = {876AE5F3-7D5C-4F4F-9D64-61DF3D7AFFB9}
+	EndGlobalSection
+EndGlobal

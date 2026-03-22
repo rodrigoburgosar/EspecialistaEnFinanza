@@ -1,0 +1,13 @@
+tickers:
+  - simbolo: PLTR
+    nombre: Palantir Technologies Inc.
+    activo: true
+  - simbolo: MSFT
+    nombre: Microsoft Corporation
+    activo: true
+  - simbolo: NVDA
+    nombre: NVIDIA Corporation
+    activo: true
+  - simbolo: GOOGL
+    nombre: Alphabet Inc.
+    activo: true
