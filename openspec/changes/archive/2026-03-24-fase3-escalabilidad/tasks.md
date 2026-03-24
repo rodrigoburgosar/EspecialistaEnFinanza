@@ -5,7 +5,7 @@
 - [x] 1.3 Ampliar ventana de precios de 14 a 25 días en `AgentePrecios` (requerido para Bollinger Bands)
 - [x] 1.4 Agregar más tickers a `config/tickers.yaml` (MSFT, NVDA, GOOGL)
 - [x] 1.5 Verificar que `TrabajadorAnalisis` itera correctamente sobre todos los tickers activos
-- [ ] 1.6 Validar que el error de un ticker no interrumpe el análisis de los demás (ya implementado — verificar con prueba manual)
+- [x] 1.6 Validar que el error de un ticker no interrumpe el análisis de los demás (ya implementado — verificar con prueba manual)
 
 ## 2. Indicadores adicionales — Bollinger Bands y EMA
 
@@ -27,7 +27,7 @@
 - [x] 3.3 Agregar `DATABASE_URL` a `.env.example` y `appsettings.json`
 - [x] 3.4 Reemplazar `db.Database.EnsureCreated()` por `db.Database.Migrate()` en `Program.cs`
 - [x] 3.5 Crear migración inicial con `dotnet ef migrations add MigracionInicial`
-- [ ] 3.6 Aplicar migración contra PostgreSQL y verificar tabla `Recomendaciones` creada correctamente
+- [x] 3.6 Aplicar migración contra PostgreSQL y verificar tabla `Recomendaciones` creada correctamente
 
 ## 4. Dashboard web — Razor Pages
 
@@ -39,12 +39,12 @@
 - [x] 4.6 Implementar `ObtenerHistorialAsync` en `RepositorioRecomendaciones`
 - [x] 4.7 Agregar tarjetas de resumen por ticker (última acción + últimas 5 señales)
 - [x] 4.8 Registrar ruta del dashboard en `Program.cs` con `app.MapRazorPages()`
-- [ ] 4.9 Verificar dashboard en `http://localhost:5000/dashboard`
+- [x] 4.9 Verificar dashboard en `http://localhost:5000/dashboard`
 
 ## 5. Verificación end-to-end
 
-- [ ] 5.1 Ejecutar análisis manual para 2 tickers distintos y verificar recomendaciones independientes en BD
-- [ ] 5.2 Verificar que caché evita llamadas duplicadas a Alpha Vantage en el mismo ciclo
-- [ ] 5.3 Verificar que Bollinger Bands amplían/reducen correctamente el nivel de confianza
-- [ ] 5.4 Navegar a `/dashboard` y verificar historial con filtros funcionando
-- [ ] 5.5 Verificar que migraciones PostgreSQL se aplican correctamente al iniciar
+- [x] 5.1 Ejecutar análisis manual para 2 tickers distintos y verificar recomendaciones independientes en BD
+- [x] 5.2 Verificar que caché evita llamadas duplicadas a Alpha Vantage en el mismo ciclo
+- [x] 5.3 Verificar que Bollinger Bands amplían/reducen correctamente el nivel de confianza
+- [x] 5.4 Navegar a `/dashboard` y verificar historial con filtros funcionando
+- [x] 5.5 Verificar que migraciones PostgreSQL se aplican correctamente al iniciar

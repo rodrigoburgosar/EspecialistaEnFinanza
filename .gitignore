@@ -8,6 +8,11 @@
 .env.*
 !.env.example
 *.pem
+
+# Base de datos SQLite (generada en runtime)
+*.db
+*.db-shm
+*.db-wal
 *.key
 *.p12
 *.pfx

@@ -1,17 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using StockAnalyzer.Contratos.Interfaces;
 using StockAnalyzer.Contratos.Modelos;
+using OrquestadorNS = StockAnalyzer.Orquestador;
 
 namespace StockAnalyzer.Api.Controllers;
 
 /// <summary>
-/// Controlador REST que expone el endpoint de consulta de recomendaciones
+/// Controlador REST que expone los endpoints de análisis y consulta de recomendaciones
 /// generadas por el sistema de análisis multi-agente.
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public sealed class RecomendacionController(
     IRepositorioRecomendaciones repositorio,
+    OrquestadorNS.Orquestador orquestador,
     ILogger<RecomendacionController> logger) : ControllerBase
 {
     /// <summary>
@@ -37,6 +39,25 @@ public sealed class RecomendacionController(
             return NotFound($"No hay recomendaciones registradas para el ticker '{ticker}'.");
         }
 
+        return Ok(recomendacion);
+    }
+
+    /// <summary>
+    /// Dispara un ciclo completo de análisis para el ticker especificado y retorna la recomendación generada.
+    /// </summary>
+    /// <param name="ticker">Símbolo bursátil a analizar (ej. "PLTR").</param>
+    /// <param name="cancellationToken">Token de cancelación.</param>
+    /// <returns>La recomendación generada por el sistema multi-agente.</returns>
+    [HttpPost("~/api/analisis/{ticker}")]
+    [ProducesResponseType(typeof(Recomendacion), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult<Recomendacion>> Analizar(
+        string ticker,
+        CancellationToken cancellationToken)
+    {
+        logger.LogInformation("Análisis manual disparado para {Ticker}", ticker);
+
+        var recomendacion = await orquestador.AnalizarAsync(ticker.ToUpperInvariant(), cancellationToken);
         return Ok(recomendacion);
     }
 }

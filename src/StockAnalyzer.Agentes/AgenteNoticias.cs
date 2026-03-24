@@ -75,40 +75,41 @@ public sealed class AgenteNoticias(
     }
 
     /// <summary>
-    /// Obtiene titulares desde NewsAPI filtrando por el nombre del ticker o empresa.
+    /// Obtiene titulares desde Newsdata.io filtrando por el ticker o empresa.
     /// </summary>
     private async Task<IEnumerable<string>> ObtenerDesdeNewsApiAsync(string ticker, CancellationToken cancellationToken)
     {
         var apiKey = configuracion["NewsApi:ApiKey"];
         if (string.IsNullOrEmpty(apiKey))
         {
-            logger.LogWarning("NEWS_API_KEY no configurado. Se omite NewsAPI.");
+            logger.LogWarning("NewsApi:ApiKey no configurado. Se omite Newsdata.io.");
             return [];
         }
 
-        var url = $"https://newsapi.org/v2/everything?q={ticker}&language=en&sortBy=publishedAt&pageSize=20&apiKey={apiKey}";
+        var url = $"https://newsdata.io/api/1/latest?apikey={apiKey}&q={ticker}&language=en";
         try
         {
             var cliente = fabricaHttp.CreateClient();
             var respuesta = await cliente.GetStringAsync(url, cancellationToken);
 
             using var documento = JsonDocument.Parse(respuesta);
-            var articulos = documento.RootElement.GetProperty("articles");
+            var resultados = documento.RootElement.GetProperty("results");
 
             var hace24Horas = DateTime.UtcNow.AddHours(-24);
 
-            return articulos.EnumerateArray()
+            return resultados.EnumerateArray()
                 .Where(a =>
                 {
-                    var fechaStr = a.GetProperty("publishedAt").GetString();
+                    var fechaStr = a.GetProperty("pubDate").GetString();
                     return DateTime.TryParse(fechaStr, out var fecha) && fecha.ToUniversalTime() >= hace24Horas;
                 })
                 .Select(a => a.GetProperty("title").GetString() ?? string.Empty)
-                .Where(titulo => !string.IsNullOrWhiteSpace(titulo) && EsRelevante(titulo, ticker));
+                .Where(titulo => !string.IsNullOrWhiteSpace(titulo) && EsRelevante(titulo, ticker))
+                .ToList();
         }
         catch (Exception ex)
         {
-            logger.LogWarning(ex, "Error al obtener noticias de NewsAPI para {Ticker}. Continuando sin esta fuente.", ticker);
+            logger.LogWarning(ex, "Error al obtener noticias de Newsdata.io para {Ticker}. Continuando sin esta fuente.", ticker);
             return [];
         }
     }

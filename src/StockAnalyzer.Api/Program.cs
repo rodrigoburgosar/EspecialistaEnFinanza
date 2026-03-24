@@ -36,7 +36,7 @@ builder.Services.AddScoped<Orquestador>();
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL")
     ?? builder.Configuration.GetConnectionString("Postgres");
 
-if (!string.IsNullOrWhiteSpace(databaseUrl) && !builder.Environment.IsDevelopment())
+if (!string.IsNullOrWhiteSpace(databaseUrl))
 {
     builder.Services.AddDbContext<ContextoBd>(opciones =>
         opciones.UseNpgsql(databaseUrl));
@@ -78,7 +78,9 @@ if (app.Environment.IsDevelopment())
         opciones.SwaggerEndpoint("/swagger/v1/swagger.json", "StockAnalyzer API v1"));
 }
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 app.MapControllers();
 app.MapRazorPages();

@@ -17,6 +17,7 @@ public sealed class ContextoBd(DbContextOptions<ContextoBd> opciones) : DbContex
         modelBuilder.Entity<EntidadRecomendacion>(entidad =>
         {
             entidad.HasKey(r => r.Id);
+            entidad.Property(r => r.Id).ValueGeneratedOnAdd();
             entidad.Property(r => r.Ticker).HasMaxLength(10).IsRequired();
             entidad.Property(r => r.Accion).HasMaxLength(10).IsRequired();
             entidad.Property(r => r.Confianza).HasMaxLength(10).IsRequired();
