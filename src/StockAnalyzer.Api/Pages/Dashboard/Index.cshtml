@@ -1,0 +1,100 @@
+@page "/dashboard"
+@model StockAnalyzer.Api.Pages.Dashboard.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/_Layout.cshtml";
+
+    string BadgeAccion(string accion) => accion switch
+    {
+        "COMPRAR" => "badge badge-comprar",
+        "VENDER"  => "badge badge-vender",
+        _         => "badge badge-mantener"
+    };
+
+    string BadgeConfianza(string confianza) => confianza == "ALTA"
+        ? "badge badge-alta" : "badge badge-media";
+}
+
+@* ── Tarjetas de resumen por ticker ─────────────────────────────────────── *@
+@if (Model.Resumen.Any())
+{
+    <div class="cards-grid">
+        @foreach (var item in Model.Resumen)
+        {
+            <div class="card">
+                <h3>@item.Ticker</h3>
+                <div>
+                    <span class="@BadgeAccion(item.UltimaAccion)">@item.UltimaAccion</span>
+                    <span class="@BadgeConfianza(item.UltimaConfianza)" style="margin-left:0.4rem">@item.UltimaConfianza</span>
+                </div>
+                <div class="card-stat" style="margin-top:0.5rem">RSI: <strong>@item.RSI.ToString("F1")</strong></div>
+                <div class="card-stat">Sentimiento: <strong>@item.Sentimiento.ToString("+0.00;-0.00;0.00")</strong></div>
+                <div class="trend-icons">@string.Concat(item.IconosTendencia)</div>
+            </div>
+        }
+    </div>
+}
+
+@* ── Barra de filtros ────────────────────────────────────────────────────── *@
+<form method="get" class="filter-bar">
+    <div>
+        <label for="ticker">Ticker</label>
+        <select id="ticker" name="ticker">
+            <option value="">Todos</option>
+            @foreach (var ticker in Model.Resumen.Select(r => r.Ticker))
+            {
+                <option value="@ticker" selected="@(Model.TickerFiltro == ticker)">@ticker</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="accion">Acción</label>
+        <select id="accion" name="accion">
+            <option value="">Todas</option>
+            <option value="COMPRAR" selected="@(Model.AccionFiltro == "COMPRAR")">COMPRAR</option>
+            <option value="VENDER"  selected="@(Model.AccionFiltro == "VENDER")">VENDER</option>
+            <option value="MANTENER" selected="@(Model.AccionFiltro == "MANTENER")">MANTENER</option>
+        </select>
+    </div>
+    <button type="submit">Filtrar</button>
+</form>
+
+@* ── Tabla de historial ──────────────────────────────────────────────────── *@
+@if (!Model.Historial.Any())
+{
+    <div class="empty-msg">
+        Aún no hay recomendaciones registradas. El análisis se ejecuta cada 4 horas.
+    </div>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Fecha (UTC)</th>
+                    <th>Acción</th>
+                    <th>Confianza</th>
+                    <th>RSI</th>
+                    <th>Sentimiento</th>
+                    <th>Noticias</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rec in Model.Historial)
+                {
+                    <tr>
+                        <td><strong>@rec.Ticker</strong></td>
+                        <td>@rec.Fecha.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td><span class="@BadgeAccion(rec.Accion)">@rec.Accion</span></td>
+                        <td><span class="@BadgeConfianza(rec.Confianza)">@rec.Confianza</span></td>
+                        <td>@rec.RSI.ToString("F1")</td>
+                        <td>@rec.Sentimiento.ToString("+0.00;-0.00;0.00")</td>
+                        <td>@rec.NoticiasAnalizadas</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

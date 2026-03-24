@@ -1,0 +1,143 @@
+# Binarios e instaladores descargados
+.claude/skills/skill-netcore/
+*.exe
+*.crdownload
+
+# Secretos y variables de entorno
+.env
+.env.*
+!.env.example
+*.pem
+
+# Base de datos SQLite (generada en runtime)
+*.db
+*.db-shm
+*.db-wal
+*.key
+*.p12
+*.pfx
+secrets/
+secrets.*
+
+# Configuración local
+*.local
+config.local.*
+settings.local.*
+.claude/settings.local.json
+
+# Credenciales de servicios en la nube
+.aws/
+.gcp/
+gcloud/
+serviceaccount.json
+credentials.json
+
+# Tokens y claves de API
+*.token
+api_keys.*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores e IDEs
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+
+# Logs
+*.log
+logs/
+
+# ─── .NET ───────────────────────────────────────────────────────────────────
+
+# Artefactos de compilación
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+[Rr]elease/
+[Dd]ebug/
+x64/
+x86/
+build/
+bld/
+out/
+
+# Resultados de tests
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!**/packages/repositories.config
+
+# Archivos de configuración con posibles secretos locales
+appsettings.local.json
+appsettings.*.local.json
+**/appsettings.Development.json
+
+# Entity Framework migrations snapshot temporal
+*.ef.bak
+
+# ─── Python (microservicio NLP) ─────────────────────────────────────────────
+
+# Caché de bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# Distribución / empaquetado
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Herramientas de análisis
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+coverage.xml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Modelos ML descargados (pueden ser muy pesados)
+models/
+*.bin
+*.pt
+*.safetensors
+
+# ─── Docker ─────────────────────────────────────────────────────────────────
+.dockerignore.local
+
+# ─── Misceláneos ────────────────────────────────────────────────────────────
+*.bak
+*.tmp
+*.temp
+*.swp
+*~
